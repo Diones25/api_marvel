@@ -1,4 +1,4 @@
-import { BadRequestException, Controller, Get, Query } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Param, Query } from '@nestjs/common';
 import { MarvelService } from './marvel.service';
 
 @Controller('marvel')
@@ -16,5 +16,10 @@ export class MarvelController {
   @Get('characters')
   async getAllCharacters(): Promise<any> {
     return this.marvelService.getAllCharacters();
+  }
+
+  @Get('characters/:characterId')
+  async getCharacterId(@Param('characterId') characterId: number): Promise<any> {
+    return this.marvelService.getCharacterId(characterId);
   }
 }
