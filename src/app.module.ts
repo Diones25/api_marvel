@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
 import { MarvelModule } from './marvel/marvel.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [MarvelModule],
+  imports: [
+    ConfigModule.forRoot(),
+    MarvelModule
+  ],
   controllers: [],
   providers: [],
 })
