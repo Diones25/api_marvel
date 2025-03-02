@@ -73,4 +73,22 @@ export class MarvelService {
       throw new Error(`Erro ao buscar personagens: ${error.message}`);
     }
   }
+
+  async getAllComics(): Promise<any> {
+
+    const params = {
+      apikey: this.publicKey,
+      ts: this.timestamp,
+      hash: this.hash
+    };
+
+    try {
+      const response = await axios.get(`${this.baseUrl}/comics`, {
+        params,
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(`Erro ao buscar personagens: ${error.message}`);
+    }
+  }
 }
