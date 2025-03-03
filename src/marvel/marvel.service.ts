@@ -70,7 +70,7 @@ export class MarvelService {
       });
       return response.data;
     } catch (error) {
-      throw new Error(`Erro ao buscar personagens: ${error.message}`);
+      throw new Error(`Erro ao buscar personagem: ${error.message}`);
     }
   }
 
@@ -88,7 +88,25 @@ export class MarvelService {
       });
       return response.data;
     } catch (error) {
-      throw new Error(`Erro ao buscar personagens: ${error.message}`);
+      throw new Error(`Erro ao buscar os quadrinhos: ${error.message}`);
+    }
+  }
+
+  async getComicsId(comicId: number): Promise<any> {
+
+    const params = {
+      apikey: this.publicKey,
+      ts: this.timestamp,
+      hash: this.hash
+    };
+
+    try {
+      const response = await axios.get(`${this.baseUrl}/comics/${comicId}`, {
+        params,
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(`Erro ao buscar quadrinho: ${error.message}`);
     }
   }
 }

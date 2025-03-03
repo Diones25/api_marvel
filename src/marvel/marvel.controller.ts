@@ -27,4 +27,9 @@ export class MarvelController {
   async getAllComics(): Promise<any> {
     return this.marvelService.getAllComics();
   }
+
+  @Get('comics/:comicId')
+  async getComicsId(@Param('comicId') comicId: number): Promise<any> {
+    return this.marvelService.getComicsId(comicId);
+  }
 }
