@@ -145,4 +145,40 @@ export class MarvelService {
       throw new Error(`Erro ao buscar a serie: ${error.message}`);
     }
   }
+
+  async getStories(): Promise<any> {
+
+    const params = {
+      apikey: this.publicKey,
+      ts: this.timestamp,
+      hash: this.hash
+    };
+
+    try {
+      const response = await axios.get(`${this.baseUrl}/stories`, {
+        params,
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(`Erro ao buscar as stories: ${error.message}`);
+    }
+  }
+
+  async getStoriesId(storyId: number): Promise<any> {
+
+    const params = {
+      apikey: this.publicKey,
+      ts: this.timestamp,
+      hash: this.hash
+    };
+
+    try {
+      const response = await axios.get(`${this.baseUrl}/stories/${storyId}`, {
+        params,
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(`Erro ao buscar story: ${error.message}`);
+    }
+  }
 }
