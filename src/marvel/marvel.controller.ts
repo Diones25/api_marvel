@@ -32,4 +32,9 @@ export class MarvelController {
   async getComicsId(@Param('comicId') comicId: number): Promise<any> {
     return this.marvelService.getComicsId(comicId);
   }
+
+  @Get('series')
+  async getSeries(): Promise<any> {
+    return this.marvelService.getSeries();
+  }
 }
