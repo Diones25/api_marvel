@@ -127,4 +127,22 @@ export class MarvelService {
       throw new Error(`Erro ao buscar as series: ${error.message}`);
     }
   }
+
+  async getSerieId(seriesId: number): Promise<any> {
+
+    const params = {
+      apikey: this.publicKey,
+      ts: this.timestamp,
+      hash: this.hash
+    };
+
+    try {
+      const response = await axios.get(`${this.baseUrl}/series/${seriesId}`, {
+        params,
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(`Erro ao buscar a serie: ${error.message}`);
+    }
+  }
 }
